@@ -54,7 +54,7 @@ from ._util import (
 from ._util import StructuredLogMessage as _
 
 quant_warning = False
-
+GITHUB_PERSONAL_ACCESS_TOKEN_KEY = "GITHUB_PERSONAL_ACCESS_TOKEN"
 
 def main(args=None):
     sys.setrecursionlimit(1_000_000)  # permit as much call stack depth as OS can give us
@@ -425,7 +425,8 @@ def make_read_source(no_outside_imports):
     top_dir = None
 
     async def read_source(uri, path, importer):
-        from urllib import parse, request
+        from urllib import parse
+        import requests
 
         if uri.startswith("http:") or uri.startswith("https:"):
             with tempfile.TemporaryDirectory(prefix="miniwdl_import_uri_") as tmpdir:
@@ -434,7 +435,15 @@ def make_read_source(no_outside_imports):
                     tmpdir,
                     os.path.basename(parse.urlsplit(uri).path),
                 )
-                request.urlretrieve(uri, filename=fn)
+                headers = {}
+                token = os.environ.get(GITHUB_PERSONAL_ACCESS_TOKEN_KEY)
+                if token:
+                    headers["Authorization"] = f"token {token}"
+                with requests.get(uri, headers=headers, stream=True) as r:
+                    r.raise_for_status()
+                    with open(fn, "wb") as f:
+                        for chunk in r.iter_content(chunk_size=8192):
+                            f.write(chunk)
                 with open(fn, "r") as infile:
                     return ReadSourceResult(infile.read(), uri)
         elif importer and (
