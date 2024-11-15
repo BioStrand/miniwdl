@@ -1,0 +1,47 @@
+{% set setup = load_setup_py_data() %}
+
+package:
+  name: biostrand-miniwdl
+  version: {{ setup['version'] }}
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation .
+  number: 0
+  preserve_egg_dir: True
+
+requirements:
+  host:
+    - python >=3.8, <3.13
+    - pip
+    - setuptools
+  run:
+    - python >=3.8, <3.13
+    - importlib-metadata >=3.10.1
+    - regex >=2020.4.4
+    - xdg >=5.0.0
+    - docker >=3.4.0
+    - PyYAML >=5.4.1,<7
+    - argcomplete >=3,<4
+    - pygtail ~=0.14
+    - coloredlogs >=15,<16
+    - python-json-logger >=2,<3
+    - lark ~=1.1
+    - bullet >=2,<3
+    - psutil >=5,<7
+    - requests >=2.31.0
+
+test:
+  imports:
+    - biostrand.miniwdl
+  commands:
+    - pip check
+  requires:
+    - pytest
+
+about:
+  home: {{ setup['url'] }}
+  summary: {{ setup['description'] }}
