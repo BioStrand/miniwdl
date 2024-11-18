@@ -139,7 +139,7 @@ docker() {
     CONDA_KEY=$(get_quetz_general_api_key)
     export DOCKER_BUILDKIT=1
     set -x
-    command docker build --ulimit nofile=65536:65536 --build-arg CONDA_KEY="$CONDA_KEY" -t pypkg-services .
+    command docker build --ulimit nofile=65536:65536 --build-arg CONDA_KEY="$CONDA_KEY" -t miniwdl .
     set +x
 }
 
