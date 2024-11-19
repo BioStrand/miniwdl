@@ -3,7 +3,7 @@
 from setuptools import find_namespace_packages, setup
 
 package = "biostrand-miniwdl"
-version = "0.0.1"
+version = "0.0.2"
 
 setup(
     name=package,
@@ -11,7 +11,7 @@ setup(
     description="Workflow Description Language (WDL) local runner & developer toolkit",
     long_description="Workflow Description Language (WDL) local runner & developer toolkit",
     url="https://github.com/BioStrand/miniwdl",
-    packages=find_namespace_packages(include=["biostrand.*"]),
+    packages=find_namespace_packages(include=["WDL", "WDL.*"]),
     install_requires=[],
     extras_require={},
     zip_safe=False,
@@ -19,7 +19,7 @@ setup(
     package_data={},
     entry_points={
         "console_scripts": [
-            "miniwdl = WDL.CLI:main",
+            "biostrand-miniwdl = WDL.CLI:main",
         ],
     },
 )

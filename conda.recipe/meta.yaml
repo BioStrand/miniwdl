@@ -12,6 +12,8 @@ build:
   script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation .
   number: 0
   preserve_egg_dir: True
+  entry_points:
+    - biostrand-miniwdl = WDL.CLI:main
 
 requirements:
   host:
@@ -36,9 +38,10 @@ requirements:
 
 test:
   imports:
-    - biostrand.WDL
+    - WDL
   commands:
     - pip check
+    - biostrand-miniwdl --version
   requires:
     - pytest
 
