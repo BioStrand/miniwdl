@@ -25,7 +25,7 @@ requirements:
     - importlib-metadata
     - regex
     - xdg
-    - docker-py
+    - docker
     - PyYAML
     - argcomplete
     - pygtail

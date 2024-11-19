@@ -7,7 +7,6 @@ version = "0.0.2"
 
 setup(
     name=package,
-    version=version,
     description="Workflow Description Language (WDL) local runner & developer toolkit",
     long_description="Workflow Description Language (WDL) local runner & developer toolkit",
     url="https://github.com/BioStrand/miniwdl",
