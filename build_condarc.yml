@@ -1,0 +1,7 @@
+conda_build:
+    pkg_format: 2
+channels:
+  - https://quetz.biostrand.cloud/t/${CONDA_KEY}/get/biostrand
+  - conda-forge
+  - bioconda
+  - nodefaults

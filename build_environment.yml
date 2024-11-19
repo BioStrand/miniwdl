@@ -1,0 +1,13 @@
+name: package_build
+channels:
+  - https://quetz.biostrand.cloud/t/${CONDA_KEY}/get/biostrand
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.10.13
+  - conda-forge::conda-build=3.27.0
+  - pip=24.0.0
+  - pip:
+    - build==1.0.3
+    - pyproject-hooks==1.0.0

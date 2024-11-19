@@ -1,0 +1,50 @@
+{% set setup = load_setup_py_data() %}
+
+package:
+  name: biostrand-miniwdl
+  version: {{ setup['version'] }}
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation .
+  number: 0
+  preserve_egg_dir: True
+  entry_points:
+    - biostrand-miniwdl = WDL.CLI:main
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+  run:
+    - python
+    - importlib-metadata
+    - regex
+    - xdg
+    - docker
+    - PyYAML
+    - argcomplete
+    - pygtail
+    - coloredlogs
+    - python-json-logger
+    - lark
+    - bullet
+    - psutil
+    - requests
+
+test:
+  imports:
+    - WDL
+  commands:
+    - pip check
+    - biostrand-miniwdl --version
+  requires:
+    - pytest
+
+about:
+  home: {{ setup['url'] }}
+  summary: {{ setup['description'] }}
