@@ -2,10 +2,12 @@
 
 from setuptools import find_namespace_packages, setup
 
-package = "miniwdl"
+package = "biostrand-miniwdl"
+version = "0.0.1"
 
 setup(
     name=package,
+    version=version,
     description="Workflow Description Language (WDL) local runner & developer toolkit",
     long_description="Workflow Description Language (WDL) local runner & developer toolkit",
     url="https://github.com/BioStrand/miniwdl",

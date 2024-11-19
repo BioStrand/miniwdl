@@ -23,7 +23,7 @@ requirements:
     - importlib-metadata
     - regex
     - xdg
-    - docker
+    - docker-py
     - PyYAML
     - argcomplete
     - pygtail
@@ -36,7 +36,7 @@ requirements:
 
 test:
   imports:
-    - biostrand.miniwdl
+    - biostrand.WDL
   commands:
     - pip check
   requires:
