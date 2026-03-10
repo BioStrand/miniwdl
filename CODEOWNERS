@@ -1,0 +1,13 @@
+# CODEOWNERS template
+#
+# This file is generated from a cookiecutter template.
+#
+# Block 1: Default fallback (all files)
+* @mbestipa
+
+# Block 2: Python runtime ownership
+environment.yml @Mike
+environment.dev.yml @Mike
+
+# Block 3: Repo-specific ownership (customize as needed)
+# --- Place your custom patterns below this line ---
