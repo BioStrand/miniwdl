@@ -1,0 +1,16 @@
+# CODEOWNERS template
+#
+# This file is generated from a cookiecutter template.
+#
+# Block 1: Default fallback (all files)
+# Updated fallback owner for demo
+* @mbestipa
+
+# Block 2: Language-specific ownership (customize as needed)
+# These should be users with language expertise
+# --- Place your custom patterns below this line ---
+
+# Block 3: Repo-specific ownership (customize as needed)
+# These should be users with domain expertise
+# e.g. have expertise on a specific portal-job folder
+# --- Place your custom patterns below this line ---
